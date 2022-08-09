@@ -4,7 +4,16 @@ export default (initialState: API.UserInfo) => {
   const canSeeAdmin = !!(
     initialState && initialState.name !== 'dontHaveAccess'
   );
+
+  // 可以在这里切换 access的值；如果都为false时，wrappers不会被执行（即log不会被打印）
+  const isTypeOne = false;
+  const isTypeTwo = false;
+  const isNotType = !isTypeOne && !isTypeTwo;
+
   return {
     canSeeAdmin,
+    isTypeOne,
+    isTypeTwo,
+    isNotType,
   };
 };

@@ -15,6 +15,26 @@ export default defineConfig({
       redirect: '/home',
     },
     {
+      path: '/test',
+      name: 'access测试',
+      wrappers: ['@/wrappers/checkType'],
+      // component:'@/wrappers/checkType',
+      routes: [
+        {
+          path: 'typeOne',
+          name: 'typeOne',
+          access: 'isTypeOne',
+          component: './Table',
+        },
+        {
+          path: 'typeTwo',
+          name: 'typeTwo',
+          access: 'isTypeTwo',
+          component: './Home',
+        },
+      ],
+    },
+    {
       name: '首页',
       path: '/home',
       component: './Home',
@@ -25,11 +45,10 @@ export default defineConfig({
       component: './Access',
     },
     {
-        name: ' CRUD 示例',
-        path: '/table',
-        component: './Table',
+      name: ' CRUD 示例',
+      path: '/table',
+      component: './Table',
     },
   ],
   npmClient: 'pnpm',
 });
-
