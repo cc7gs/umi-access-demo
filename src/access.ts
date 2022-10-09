@@ -9,5 +9,6 @@ export default (initialState: IInitialState) => {
 
   return {
     canSeeAdmin,
+    canSeeHome: initialState.canSeeHome,
   };
 };

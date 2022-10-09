@@ -18,6 +18,7 @@ export default defineConfig({
       name: '首页',
       path: '/home',
       component: './Home',
+      access: 'canSeeHome',
     },
     {
       name: '权限演示',

@@ -1,9 +1,9 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Access, useAccess } from '@umijs/max';
+import { useModel } from '@umijs/max';
 import { Button } from 'antd';
 
 const AccessPage: React.FC = () => {
-  const access = useAccess();
+  const { initialState, setInitialState } = useModel('@@initialState');
   return (
     <PageContainer
       ghost
@@ -11,9 +11,17 @@ const AccessPage: React.FC = () => {
         title: '权限示例',
       }}
     >
-      <Access accessible={access.canSeeAdmin}>
-        <Button>只有 Admin 可以看到这个按钮</Button>
-      </Access>
+      <pre>{JSON.stringify(initialState)}</pre>
+      <Button
+        onClick={() => {
+          setInitialState({
+            ...initialState!,
+            canSeeHome: !initialState?.canSeeHome,
+          });
+        }}
+      >
+        改变Home页面权限
+      </Button>
     </PageContainer>
   );
 };
